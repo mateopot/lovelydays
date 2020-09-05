@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier propriete
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier une propriété</h1>
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+	<a href="{{ path('propriete_index') }}" class="btn btn-info">Retour</a>
+	{{ form_end(form) }}
+
+
+{% endblock %}

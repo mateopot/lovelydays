@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Propriété
+{% endblock %}
+
+{% block body %}
+	<div id="details">
+		<h1>Détails</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ propriete.address }}</td>
+				</tr>
+				<tr>
+					<th>Ville</th>
+					<td>{{ propriete.city }}</td>
+				</tr>
+				<tr>
+					<th>Propriétaire</th>
+					<td>{{ propriete.proprietaire }}</td>
+				</tr>
+				<tr>
+					<th>Taille</th>
+					<td>{{ propriete.m2 }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ propriete.price }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('propriete_index') }}" class="btn btn-info">Retour</a>
+		<a href="{{ path('propriete_edit', {'id': propriete.id}) }}" class="btn btn-success">Modifier</a>
+		<form method="post" action="{{ path('propriete_delete', {'id': propriete.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette propriété ?');">
+			<input type="hidden" name="_method" value="DELETE">
+			<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ propriete.id) }}">
+			<button class="btn btn-danger">Supprimer</button>
+		</form>
+	</div>
+{% endblock %}

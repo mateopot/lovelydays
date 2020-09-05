@@ -1,0 +1,45 @@
+#content {
+    margin : 5%;
+} 
+
+input,select{
+    margin-left: 2% !important; 
+    border : 1px solid black !important;
+    margin-bottom: 1% !important;
+}
+
+label{
+    font-style: italic;
+}
+
+h1 {
+    text-align : center;
+    padding-bottom : 2%;
+}
+
+#index a, #details a {
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.property {
+   border: 2px solid #A9A9A9;
+   padding: 2%;
+   width: 30%;
+   text-align: center;
+   border-radius: 2%;
+   transition: all .2s ease-in-out;
+}
+
+.property h3 {
+    font-style: italic;
+}
+
+.property h2 {
+    font-weight: bold;
+}
+
+.property:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}

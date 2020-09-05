@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des propriétés
+{% endblock %}
+
+{% block body %}
+	<div id="index">
+		<h1>Liste des propriétés</h1>
+		<a href="{{ path('propriete_new') }}" class="btn btn-primary">Ajouter une propriété</a>
+		<a href="{{ path('proprietaire_new') }}" class="btn btn-primary">Ajouter un proprietaire</a>
+		{% for propriete in proprietes %}
+			<div class="property">
+				<h2>{{propriete.address}}</h2>
+				<h3>{{propriete.city}}</h3>
+				<a href="{{ path('propriete_show', {'id': propriete.id}) }}" class="btn btn-info">Détails</a>
+				<a href="{{ path('propriete_edit', {'id': propriete.id}) }}" class="btn btn-success">Modifier</a>
+				<form method="post" action="{{ path('propriete_delete', {'id': propriete.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette propriété ?');">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ propriete.id) }}">
+					<button class="btn btn-danger">Supprimer</button>
+				</form>
+			</div>
+		{% else %}
+			<h2>Aucune propriété n'a été trouvée</h2>
+		{% endfor %}
+	</div>
+{% endblock %}
